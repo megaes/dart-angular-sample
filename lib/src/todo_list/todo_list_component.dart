@@ -1,9 +1,7 @@
-import 'dart:async';
-
 import 'package:angular/angular.dart';
 import 'package:angular_components/angular_components.dart';
-
-import 'todo_list_service.dart';
+import '../services/http_service.dart';
+import '../time_line/time_line_component.dart';
 
 @Component(
   selector: 'todo-list',
@@ -16,26 +14,29 @@ import 'todo_list_service.dart';
     materialInputDirectives,
     NgFor,
     NgIf,
+    TimeLineComponent
   ],
-  providers: [ClassProvider(TodoListService)],
 )
 class TodoListComponent implements OnInit {
-  final TodoListService todoListService;
+  final HttpService _httpService;
 
-  List<String> items = [];
-  String newTodo = '';
+  Map<int, String> items = {};
 
-  TodoListComponent(this.todoListService);
+  String objName = '';
+
+  TodoListComponent(this._httpService);
 
   @override
-  Future<Null> ngOnInit() async {
-    items = await todoListService.getTodoList();
+  void ngOnInit() {
   }
 
   void add() {
-    items.add(newTodo);
-    newTodo = '';
+    int objID = _httpService.trackNewObject();
+    items[objID] = objName;
+    objName = '';
   }
 
-  String remove(int index) => items.removeAt(index);
+  void remove(int id) {
+    items.remove(id);
+  }
 }

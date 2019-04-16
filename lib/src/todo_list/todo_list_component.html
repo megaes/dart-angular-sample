@@ -1,31 +1,30 @@
-<!-- Components info: https://webdev.dartlang.org/components -->
+
 <div>
-  <material-input label="What do you need to do?"
+  <material-input label="Имя объекта"
                   autoFocus floatingLabel style="width:80%"
-                  [(ngModel)]="newTodo"
+                  [(ngModel)]="objName"
                   (keyup.enter)="add()">
   </material-input>
 
   <material-fab mini raised
                 (trigger)="add()"
-                [disabled]="newTodo.isEmpty">
+                [disabled]="objName.isEmpty">
     <material-icon icon="add"></material-icon>
   </material-fab>
 </div>
 
 <p *ngIf="items.isEmpty">
-  Nothing to do! Add items above.
+  Ничего не обрабатывается, добавьте объект!
 </p>
 
 <div *ngIf="items.isNotEmpty">
-  <ul>
-      <li *ngFor="let item of items; let i=index">
-        <material-checkbox #done materialTooltip="Mark item as done">
-        </material-checkbox>
-        <span [class.done]="done.checked">{{item}}</span>
-        <material-fab mini (trigger)="remove(i)">
+    <div *ngFor="let id of items.keys" class="object-box">
+      <div class="object-box-inner">
+        <span class="name">{{ items[id] }}</span>
+        <material-fab mini (trigger)="remove(id)" class="trash-basket">
           <material-icon icon="delete"></material-icon>
         </material-fab>
-      </li>
-  </ul>
+      </div>
+      <time-line [objectID]="id"></time-line>
+    </div>
 </div>

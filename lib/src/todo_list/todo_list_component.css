@@ -1,25 +1,23 @@
-ul {
-  list-style: none;
-  padding-left: 0;
-}
 
-li {
+.name {
   line-height: 3em;
 }
 
-li:hover {
-  background-color: #EEEEEE;
-}
-
-li material-checkbox {
-  vertical-align: middle;
-}
-
-li material-fab {
+.trash-basket {
   float: right;
   vertical-align: middle;
 }
 
-.done {
-  text-decoration: line-through;
+.object-box {
+  margin-top: 5px;
+  border: 1px solid #0000001f;
+  padding: 5px 15px 15px;
 }
+
+.object-box-inner {
+  height: 50px;
+  border-bottom: 1px solid #0000001f;
+  padding: 0px 15px;
+  margin-bottom: 15px;
+}
+
