@@ -1,0 +1,24 @@
+<div class="container">
+    <div *ngFor="let state of states; let i = index" [ngStyle]="setCaptionStyle(i)">
+        {{ state.name }}
+    </div>
+</div>
+
+<div class="container" style="height: 40px">
+    <div *ngFor="let state of states; let i=index" style="position: relative" [ngStyle]="setWidth(state.width)">
+        <div *ngIf="i < states.length - 1" class="progress-bar" [ngStyle]="setColorBar(state.progress)"> </div>
+        <div class ="progress-dot" [ngStyle]="setColorDot(state.time == null)"></div>
+    </div>
+</div>
+
+<div class="container">
+    <div *ngFor="let state of states; let i = index" [ngStyle]="setWidth(state.width)">
+        <div *ngIf="state.time != null" [ngStyle]="setTxtOverflow(i)">
+            {{ state.time | date:'HH.mm.ss' }}
+            <br>
+            {{ state.time | date:"dd.MM.yyyy" }}
+        </div>
+    </div>
+</div>
+
+

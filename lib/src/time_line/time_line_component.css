@@ -1,0 +1,21 @@
+
+.container {
+    display: flex;
+    align-items: center;
+}
+
+.progress-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+}
+
+.progress-bar {
+    height: 2px;
+    position: absolute;
+    left: 6px;
+    right: 0px;
+}
